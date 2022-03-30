@@ -1,0 +1,13 @@
+- hosts: "{{host_group_name | default('localhost')}}"
+  connection: local
+
+  tasks:
+  - name: debug hosts
+    debug:
+      msg: "{{ groups['all'] }}"
+  - name: debug passed group name
+    debug:
+      msg: "{{ host_group_name }}"
+  - name: debug file_path
+    debug:
+      msg: "{{ file_path }}"
