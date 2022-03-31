@@ -60,3 +60,11 @@
           name: "demo"
           namespace: "default"
     ignore_errors: true
+  - name: "Removing managed ServiceAccount {{ managed_serviceaccount.name }}"
+    ocmplus.cm.managed_serviceaccount:
+      state: absent
+      hub_kubeconfig: "{{ lookup('env', 'K8S_AUTH_KUBECONFIG') }}"
+      managed_cluster: "cluster22"
+      name: "{{ managed_serviceaccount.name }}"
+      wait: True
+      timeout: 60
