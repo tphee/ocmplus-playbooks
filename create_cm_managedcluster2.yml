@@ -42,7 +42,7 @@
       hub_kubeconfig: "{{ lookup('env', 'K8S_AUTH_KUBECONFIG') }}"
       managed_cluster: "cluster22"
       managed_serviceaccount_name: "{{ managed_serviceaccount.name }}"
-      rbac_template: "{{ role_path }}/files/rbac"
+      rbac_template: "files/rbac"
       wait: True
       timeout: 60
     register: result
