@@ -1,4 +1,4 @@
-- name: "Creating configMap {{ configmap_name }} on localhost host group"
+- name: "Creating configMap demo on localhost host group"
   hosts: "localhost"
   connection: local
   tasks:
@@ -47,7 +47,7 @@
       timeout: 60
     register: result
     ignore_errors: true
-  - name: "Creating configMap {{ configmap_name }} on cluster22"
+  - name: "Creating configMap demo on cluster22"
     kubernetes.core.k8s:
       state: present
       host: "{{ cluster_proxy.cluster_url }}"
@@ -57,7 +57,7 @@
         apiVersion: v1
         kind: ConfigMap
         metadata:
-          name: "{{ configmap_name }}"
+          name: "demo"
     ignore_errors: true
   - name: "Removing managed ServiceAccount {{ managed_serviceaccount.name }}"
     ocmplus.cm.managed_serviceaccount:
