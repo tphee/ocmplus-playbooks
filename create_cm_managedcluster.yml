@@ -58,6 +58,7 @@
         kind: ConfigMap
         metadata:
           name: "{{ configmap_name }}"
+          namespace: default
     ignore_errors: true
   - name: "Removing managed ServiceAccount {{ managed_serviceaccount.name }}"
     ocmplus.cm.managed_serviceaccount:

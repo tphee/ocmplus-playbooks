@@ -1,0 +1,18 @@
+- name: "PolicySets"
+  hosts: localhost
+  connection: local
+  tasks:
+  - name: "openshift-hardening policySet"
+    ocmplus.cm.policyset:
+      hub_kubeconfig: "{{ lookup('env', 'K8S_AUTH_KUBECONFIG') }}"
+      state: present
+      description: Applies the OpenShift best practices for how to harden your OpenShift clusters.
+      namespace: default
+      manifest_dir: policygenerator/policy-sets/community/ansible/openshift-hardening
+      github_repository_url: https://github.com/tphee/policy-collection.git
+      github_repository_branch: ansible
+      cluster_selectors:
+        - vendor=OpenShift
+        - name!=local-cluster
+
+
