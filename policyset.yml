@@ -5,7 +5,7 @@
   - name: "openshift-hardening policySet"
     ocmplus.cm.policyset:
       hub_kubeconfig: "{{ lookup('env', 'K8S_AUTH_KUBECONFIG') }}"
-      state: absent
+      state: present
       description: Applies the OpenShift best practices for how to harden your OpenShift clusters.
       namespace: default
       manifest_dir: policygenerator/policy-sets/community/ansible/openshift-hardening
